@@ -68,6 +68,7 @@ class CMS(object):
             self.init_app(app)
 
     def init_app(self, app):
+        self.app = app
         # Use the newstyle teardown_appcontext if it's available,
         # otherwise fall back to the request context
         if hasattr(app, "teardown_appcontext"):
