@@ -39,15 +39,14 @@ class RepositoryCreationTestCase(unittest.TestCase):
 
     def test_page_content(self):
         page = self.pico.get_content("/index")
-        self.assertTrue(page.draft)
-        self.assertEqual(page.name, "index")
+        self.assertTrue(page.meta["draft"])
+        self.assertEqual(page.meta["name"], "index")
 
     def test_doc_content(self):
         doc = self.pico.get_data("/site")
-        self.assertEqual(doc.name, "site")
+        self.assertEqual(doc.meta["name"], "site")
 
-        data = json.loads(doc.content)
-        self.assertEqual(data["name"], "PicoCMS")
+        self.assertEqual(doc.json["name"], "PicoCMS")
 
     def test_page_list(self):
         res = self.pico.list_content("/news")

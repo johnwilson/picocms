@@ -60,6 +60,23 @@ class Document(BaseModel):
         )
 
 
+class RepositoryObject(object):
+    def __init__(self, result):
+        self.content = result.content
+
+        self.meta = {}
+        self.meta["directory"] = result.directory
+        self.meta["name"] = result.name
+        if type(result) is Page:
+            self.meta["title"] = result.title
+            self.meta["date"] = result.date
+            self.meta["draft"] = result.draft
+
+    @property
+    def json(self):
+        return json.loads(self.content)
+
+
 class CMS(object):
     """Lytpages CMS"""
     def __init__(self, app=None):
@@ -106,7 +123,7 @@ class CMS(object):
         except Page.DoesNotExist:
             raise ValueError("Invalid Content path: %s" % path)
         
-        return page
+        return RepositoryObject(page)
 
     @property
     def content_count(self):
@@ -144,7 +161,7 @@ class CMS(object):
         except Document.DoesNotExist:
             raise ValueError("Invalid Data path: %s" % path)
         
-        return doc
+        return RepositoryObject(doc)
 
     @property
     def data_count(self):
