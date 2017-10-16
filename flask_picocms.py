@@ -6,7 +6,7 @@ This module provides a lightweight CMS backend for Flask apps.
 :license:   MIT, see LICENSE for more details.
 """
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 import os
 import shutil
