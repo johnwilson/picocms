@@ -1,0 +1,53 @@
+# dev files
+env
+cleanup
+
+# editor files
+*.sublime-project
+*.sublime-workspace
+
+# python files
+*.py[cod]
+
+# C extensions
+*.so
+
+# Mac files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# SQLite databases
+*.sqlite
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml

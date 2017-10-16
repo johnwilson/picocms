@@ -1,0 +1,7 @@
+title = "main site content"
+date = "2011-12-5"
+draft = true
+
+[content]
+welcome = "Welcome to *Lytpages!*"
+para2 = "When do you want to start the **call?**"

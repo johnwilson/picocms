@@ -1,0 +1,7 @@
+title = "news item 2"
+date = "2011-12-5"
+draft = false
+
+[content]
+text = """
+"""
