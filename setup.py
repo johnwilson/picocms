@@ -14,7 +14,7 @@ with open('flask_picocms/__init__.py', 'r') as f:
 setup(
     name='Flask-PicoCMS',
     version=version,
-    url='http://github.com/johnwilson/flask-picocms/',
+    url='https://github.com/johnwilson/picocms',
     license='MIT',
     author='John K.E. Wilson',
     author_email='wilsonfiifi@gmail.com',
@@ -24,6 +24,8 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms='any',
+    download_url='https://github.com/johnwilson/picocms/archive/v0.0.1.tar.gz',
+    keywords=['flask', 'cms'],
     install_requires=[
         "Flask",
         "peewee==2.10.2",
