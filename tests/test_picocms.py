@@ -3,7 +3,7 @@ import os
 import shutil
 import json
 from flask import Flask
-from flask_picocms.cms import CMS
+from flask_picocms import CMS
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

@@ -7,7 +7,7 @@ Lightweight CMS backend for Flask apps.
 import re
 from setuptools import setup
 
-with open('flask_picocms/__init__.py', 'r') as f:
+with open('flask_picocms.py', 'r') as f:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
                         f.read(), re.MULTILINE).group(1)
 
@@ -24,7 +24,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms='any',
-    download_url='https://github.com/johnwilson/picocms/archive/v0.0.1.tar.gz',
+    download_url='https://github.com/johnwilson/picocms/archive/v%s.tar.gz' % version,
     keywords=['flask', 'cms'],
     install_requires=[
         "Flask",
