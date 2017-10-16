@@ -16,7 +16,6 @@ Flask code `app.py`
 
 ```python
 import os
-import json
 from flask import Flask
 from flask_picocms import CMS
 
@@ -39,8 +38,7 @@ def rebuild_cms():
 @app.route("/")
 def index():
     page = pico.get_content("/welcome")
-    content = json.loads(page.content)
-    return content["content"]["message"]
+    return page.json["content"]["message"]
 ```
 
 CMS file (*.toml* or *.json*) `cms/pages/welcome.toml`
