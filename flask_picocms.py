@@ -80,12 +80,18 @@ class RepositoryObject(object):
 class CMS(object):
     """Lytpages CMS"""
     def __init__(self, app=None):
-        self.app = app
+        self.config = {}
+
         if app is not None:
             self.init_app(app)
 
     def init_app(self, app):
-        self.app = app
+        self.config = {
+            "db": app.config["PICOCMS_DATABASE"],
+            "data": app.config["PICOCMS_SOURCE_DATA"],
+            "pages": app.config["PICOCMS_SOURCE_PAGES"]
+        }
+
         # Use the newstyle teardown_appcontext if it's available,
         # otherwise fall back to the request context
         if hasattr(app, "teardown_appcontext"):
@@ -93,7 +99,7 @@ class CMS(object):
         else:
             app.teardown_request(self.teardown)        
 
-        database.init(app.config["PICOCMS_DATABASE"])
+        database.init(self.config["db"])
         database.connect()
 
     def teardown(self, exception):
@@ -168,7 +174,7 @@ class CMS(object):
         return Document.select().count()
 
     def __add_content(self):
-        _dir = self.app.config["PICOCMS_SOURCE_PAGES"]
+        _dir = self.config["pages"]
         
         for root, dirs, files in os.walk(_dir):
             for item in files:
@@ -185,7 +191,7 @@ class CMS(object):
                 pg.save()
 
     def __add_data(self):
-        _dir = self.app.config["PICOCMS_SOURCE_DATA"]
+        _dir = self.config["data"]
         
         for root, dirs, files in os.walk(_dir):
             for item in files:
