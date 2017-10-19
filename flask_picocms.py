@@ -103,8 +103,10 @@ class CMS(object):
         database.connect()
 
     def teardown(self, exception):
-        if database is not None:
+        try:
             database.close()
+        except Exception as e:
+            pass        
         
     def rebuild(self):
         self.clear()
