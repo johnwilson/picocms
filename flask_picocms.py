@@ -6,7 +6,7 @@ This module provides a lightweight CMS backend for Flask apps.
 :license:   MIT, see LICENSE for more details.
 """
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 import os
 import shutil
@@ -103,7 +103,8 @@ class CMS(object):
         database.connect()
 
     def teardown(self, exception):
-        database.close()
+        if database is not None:
+            database.close()
         
     def rebuild(self):
         self.clear()
